@@ -1,4 +1,9 @@
-from django.shortcuts import render
+from rest_framework import viewsets
 
-def post_list(request):
-    return render(request, 'mspace/post_list.html', {})
+from .models import MessagePost
+from .serializers import MessageSerializer
+
+
+class MessageViewSet(viewsets.ModelViewSet):
+    queryset = MessagePost.objects.all()
+    serializer_class = MessageSerializer

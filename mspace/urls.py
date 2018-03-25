@@ -1,6 +1,8 @@
-from django.conf.urls import url
-from . import views
+from rest_framework import routers
 
-urlpatterns = [
-    url(r'^$', views.post_list, name='post_list'),
-]
+from .views import MessageViewSet
+
+router = routers.DefaultRouter()
+router.register(r'messages', MessageViewSet)
+
+urlpatterns = router.urls
